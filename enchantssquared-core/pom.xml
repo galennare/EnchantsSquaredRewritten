@@ -62,7 +62,8 @@
             <groupId>me.athlaeos</groupId>
             <artifactId>valhallatrinkets</artifactId>
             <version>2.1</version>
-            <scope>provided</scope>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/ValhallaTrinkets.jar</systemPath>
         </dependency>
     </dependencies>
 </project>

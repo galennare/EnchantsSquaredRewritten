@@ -81,7 +81,11 @@ public final class EnchantsSquared extends JavaPlugin {
     public void onEnable() {
         plugin = this;
         if (!setupNMS()){
-            logSevere("This version of Minecraft is not compatible with EnchantsSquared. Sorry!");
+            logSevere(
+                "This version (" +
+                    getNmsVersion() +
+                    ") of Minecraft is not compatible with EnchantsSquared. Sorry!"
+            );
             getServer().getPluginManager().disablePlugin(this);
             return;
         }
@@ -285,7 +289,7 @@ public final class EnchantsSquared extends JavaPlugin {
 
     private boolean setupNMS() {
         try {
-            String nmsVersion = MinecraftVersion.getServerVersion().getNmsVersion();
+            String nmsVersion = getNmsVersion();
             if (nmsVersion == null) {
                 return false;
             }
@@ -298,6 +302,10 @@ public final class EnchantsSquared extends JavaPlugin {
         } catch (Exception | Error ignored) {
             return false;
         }
+    }
+
+    private static String getNmsVersion() {
+        return MinecraftVersion.getServerVersion().getNmsVersion();
     }
 
     public static void logInfo(String info){
